@@ -1,0 +1,14 @@
+strictness: medium
+
+ignore-paths:
+  - .git
+  - .venv
+  - node_modules
+  - static
+  - webpack
+  - accounts/migrations
+  - app/migrations
+
+pyflakes:
+  disable:
+    - F999

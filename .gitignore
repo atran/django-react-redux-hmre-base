@@ -1,0 +1,39 @@
+.env
+
+# IDEs
+.project
+.pydevproject
+.idea
+.vscode
+.settings
+
+# Random files
+*~
+\#*
+.DS_Store
+
+.venv/
+htmlcov/
+static/bundles/*
+webpack-stats.json
+.python-version
+
+# Python compiled byte code
+*.pyc
+__pycache__
+
+# SQLite3 database
+*.sqlite
+
+# Node modules
+node_modules/
+yarn.lock
+npm-debug.log
+
+# static validation files
+.sass-lint.yml
+.prospector.yml
+.coveragerc
+
+# not include scripts because they come from external module
+scripts/
