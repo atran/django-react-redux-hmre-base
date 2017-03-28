@@ -6,8 +6,9 @@ ignore-paths:
   - node_modules
   - static
   - webpack
-  - accounts/migrations
-  - app/migrations
+
+ignore-patterns:
+  - (^|/)migrations(/|$)
 
 pyflakes:
   disable:

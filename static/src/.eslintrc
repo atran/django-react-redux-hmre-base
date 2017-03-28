@@ -12,10 +12,10 @@
     "jsx-a11y"
   ],
   "parserOptions": {
-    "ecmaVersion": 6,
+    "ecmaVersion": 7,
     "sourceType": "module",
     "ecmaFeatures": {
-      "jsx": true
+      "jsx": true,
     }
   },
   "rules": {
@@ -39,6 +39,10 @@
     "no-shadow": 0,
     "no-underscore-dangle": 0,
     "no-tabs": 0,
+    "comma-dangle": [
+      "error",
+      "always-multiline"
+    ],
     "react/jsx-indent-props": [
       1,
       "tab"

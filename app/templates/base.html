@@ -1,0 +1,24 @@
+{% load render_bundle from webpack_loader %}
+{% load i18n %}
+{% load meta %}
+<!DOCTYPE html>
+<html>
+	<head {% meta_namespaces %}>
+		{% include 'meta/meta.html' %}
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>App</title>
+		<link rel="shortcut icon" href="/static/assets/favicon.ico?v=1" type="image/x-icon" />
+		{% render_bundle 'main' 'css' %}
+	</head>
+
+	<body>
+		<div id="root"></div>
+		{% block content %}
+		{% endblock %}
+
+		{% render_bundle 'vendor' %}
+		{% render_bundle 'main' 'js' %}
+	</body>
+</html>

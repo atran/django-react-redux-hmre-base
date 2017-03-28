@@ -16,7 +16,9 @@ config.entry = [
   './../static/src/index'
 ];
 
-config.devtool = 'cheap-module-source-map';
+config.devtool = 'eval-source-map';
+
+config.stats = 'none';
 
 // override django's STATIC_URL for webpack bundles
 config.output.publicPath = serverUrl + '/static/bundles/';
@@ -25,13 +27,19 @@ config.output.publicPath = serverUrl + '/static/bundles/';
 config.plugins = config.plugins.concat([
   new BundleTracker({filename: './webpack-stats.json'}),
   new webpack.HotModuleReplacementPlugin(),
-  new webpack.NoErrorsPlugin(),
+  new webpack.NoEmitOnErrorsPlugin(),
 ]);
 
 config.module.rules.push(
   {
-    test: /\.scss$/,
-    loaders: ['style-loader', 'css-loader?sourceMap', 'postcss-loader', 'sass-loader?sourceMap']
+    test: /\.s?css$/,
+    loaders: [
+      'style-loader',
+      'css-loader?sourceMap',
+      'resolve-url-loader',
+      'postcss-loader?sourceMap',
+      'sass-loader?sourceMap'
+    ]
   }
 );
 

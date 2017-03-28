@@ -27,7 +27,6 @@ __pycache__
 
 # Node modules
 node_modules/
-yarn.lock
 npm-debug.log
 
 # static validation files
@@ -37,3 +36,18 @@ npm-debug.log
 
 # not include scripts because they come from external module
 scripts/
+
+.yarnclean
+
+.elasticbeanstalk
+.cache
+.coverage
+
+media
+staticfiles
+static/dist/
+webpack-stats-prod.json
+
+*.db
+.cache
+.coverage

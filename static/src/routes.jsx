@@ -1,14 +1,19 @@
-import React from 'react';
-import { Route, IndexRoute } from 'react-router';
 import App from './app';
-import { HomeView, LoginView, ProtectedView, NotFoundView } from './containers';
-import requireAuthentication from './utils/requireAuthentication';
 
-export default(
-	<Route path="/" component={App}>
-		<IndexRoute component={HomeView} />
-		<Route path="login" component={LoginView} />
-		<Route path="protected" component={requireAuthentication(ProtectedView)} />
-		<Route path="*" component={NotFoundView} />
-	</Route>
-);
+// Loading modules!
+function loadRoute(cb) {
+	window.scrollTo(0, 0);
+	return module => cb(null, module.default);
+}
+
+export default {
+	path: '/', // at index '/', the <Core /> component will be loaded
+	component: App,
+	indexRoute: { // but we also want our indexRoute to load <Home />
+		getComponent(location, cb) {
+			System.import('./containers/Home')
+				.then(loadRoute(cb));
+		},
+	},
+	childRoutes: [],
+};

@@ -5,9 +5,6 @@ Heavily based on [django-react-redux-base](https://github.com/Seedstars/django-r
 ## Quickstart
 
 ```
-# Install SCSS linter
-sudo gem install scss_lint -v 0.45.0
-
 # Install Python 3.4.3
 brew install pyenv
 pyenv install 3.4.3
@@ -24,7 +21,7 @@ cp .env.example .env
 
 # Migrate and load in a default user
 python manage.py migrate
-python manage.py loaddata fixtures.json
+python manage.py createsuperuser
 
 # Install front end dependencies
 yarn

@@ -2,11 +2,14 @@ var path = require('path');
 var webpack = require('webpack');
 var autoprefixer = require('autoprefixer');
 var BundleTracker = require('webpack-bundle-tracker');
+var Dotenv = require('dotenv-webpack');
 
 module.exports = {
   context: __dirname,
 
-  entry: process.cwd() + '/static/src',
+	entry: {
+		main: path.join(__dirname, '../static/src/'),
+	},
 
   output: {
     path: path.resolve('static/bundles/'),
@@ -14,6 +17,15 @@ module.exports = {
   },
 
   plugins: [
+		new Dotenv(),
+
+		// Extract all 3rd party modules into a separate 'vendor' chunk
+		new webpack.optimize.CommonsChunkPlugin({
+			name: 'vendor',
+			minChunks: function(module) {
+				return /node_modules/.test(module.resource);
+			}
+		}),
     new BundleTracker({filename: './webpack-stats.json'}),
     new webpack.ProvidePlugin({
       'React':      'react',
@@ -26,13 +38,12 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.svg$/,
-        loader: 'babel-loader!svg-react'
-      },
-      {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        loader: 'babel-loader'
+        loader: 'babel-loader',
+				query: {
+					cacheDirectory: true, //speed boost
+				},
       },
       {
         test: /\.json?$/,
@@ -43,7 +54,7 @@ module.exports = {
         loader: 'url-loader?limit=1000'
       },
       {
-        test: /\.ttf?$/,
+        test: /\.(eot|svg|ttf|woff|woff2|otf)$/,
         loader: 'base64-font-loader'
       }
     ],
