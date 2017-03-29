@@ -16,7 +16,7 @@
     "lint:js": "npm run lint:eslint",
     "lint:eslint": "eslint --ext js,jsx static/src/.",
     "lint:scss": "stylelint ./static/src/**/**/*.scss",
-    "lint:js:autofix": "eslint --fix --ext js,jsx static/src/.",
+    "lint:js:autofix": "eslint --fix --ext js,jsx static/src/."
   },
   "postcss": {
     "plugins": {

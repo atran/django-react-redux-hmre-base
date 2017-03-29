@@ -29,6 +29,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
+        fields = DEFAULT_USER_FIELDS
         read_only_fields = (
             User.USERNAME_FIELD,
         )
