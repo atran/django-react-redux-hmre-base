@@ -17,10 +17,6 @@
     "lint:eslint": "eslint --ext js,jsx static/src/.",
     "lint:scss": "stylelint ./static/src/**/**/*.scss",
     "lint:js:autofix": "eslint --fix --ext js,jsx static/src/.",
-    "storybook:dev": "start-storybook -p 6006 -c ./static/src/stories",
-    "storybook:build": "build-storybook -c ./static/src/stories -o ./static/storybook",
-    "api-blueprint:copy": "make api-blueprint",
-    "api-blueprint:build": "make build-api-docs"
   },
   "postcss": {
     "plugins": {
